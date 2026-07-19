@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerDeath _playerDeath;
 
     [SerializeField] public bool _isGameOver;
+    [SerializeField] public bool _isGoalReached;
     private void Start()
     {
         GetScripts();
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (_isGameOver) { return; }
+        if (_isGameOver || _isGoalReached) { return; }
         Movement();
     }
     public void Movement()
@@ -42,5 +43,9 @@ public class PlayerController : MonoBehaviour
         {
             _playerMovement.MoveRight();
         }
+    }
+    public void GoalReached()
+    {
+        _isGoalReached = true;
     }
 }
