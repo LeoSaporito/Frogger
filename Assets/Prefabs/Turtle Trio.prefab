@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 768814050538336455, guid: 9a24d3b5fbfd56d4599381195132b88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 768814050538336455, guid: 9a24d3b5fbfd56d4599381195132b88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 768814050538336455, guid: 9a24d3b5fbfd56d4599381195132b88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -283,8 +283,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3030096120541037916}
   - component: {fileID: 3458840903585374197}
-  - component: {fileID: 2486387569475372283}
   - component: {fileID: 7131884604828565171}
+  - component: {fileID: 178059259159181991}
   m_Layer: 0
   m_Name: Turtle Trio
   m_TagString: River
@@ -356,21 +356,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.1054125, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2486387569475372283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5885823339760332892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97b17849a507884d9ca425850bdca55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TurtleMovement
-  _moveSpeed: 0
-  _direction: 0
-  _position: {x: 0, y: 0}
 --- !u!114 &7131884604828565171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,3 +368,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68dbfa73f0c60f42a99fc68eb264099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiverCollision
+  _moveSpeed: 0
+  _direction: 0
+--- !u!114 &178059259159181991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885823339760332892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe6664eef4b46b4fbec9ab8dc19fd53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RiverMovement
+  _moveSpeed: 0
+  _direction: 0
+  _position: {x: 0, y: 0}

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 directionalInput;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerDeath _playerDeath;
+
+    [SerializeField] public bool _isGameOver;
     private void Start()
     {
         GetScripts();
@@ -19,11 +21,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (!_playerDeath._isAlive) { return; }
-        else
-        {
-            Movement();
-        }
+        if (_isGameOver) { return; }
+        Movement();
     }
     public void Movement()
     {

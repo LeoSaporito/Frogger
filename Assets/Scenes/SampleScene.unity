@@ -133,27 +133,14 @@ GameObject:
   - component: {fileID: 315617224}
   - component: {fileID: 315617220}
   - component: {fileID: 315617219}
-  - component: {fileID: 315617218}
   - component: {fileID: 315617226}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &315617218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315617217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a19092f22330e4db190376acecb91c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
 --- !u!114 &315617219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _playerController: {fileID: 0}
+  _isOnRiver: 0
+  _riverMoveSpeed: 0
+  _riverDirection: 0
 --- !u!114 &315617220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   directionalInput: {x: 0, y: 0}
   _playerMovement: {fileID: 0}
+  _playerDeath: {fileID: 0}
+  _isGameOver: 0
 --- !u!212 &315617222
 SpriteRenderer:
   serializedVersion: 2
@@ -337,9 +329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 315617217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee317afa70335a4a954f30b255e2b6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b81b7f8e8d2e7f41a4b50305ba1ab36, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionManager
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  _livesManager: {fileID: 1923922217}
+  _gravePrefab: {fileID: 1195878370769407239, guid: d9b61dc9966342a459acaad54b5dfb4f, type: 3}
 --- !u!1 &341839595
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +439,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _slowLaneOne: 0
   _slowLaneTwo: 0
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!114 &375404886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +510,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _slowLaneOne: 0
   _slowLaneTwo: 0
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!114 &405732288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +866,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _slowLaneOne: 0
   _slowLaneTwo: 0
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!114 &760143565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +949,157 @@ MonoBehaviour:
   - {fileID: 1329857373}
   - {fileID: 1315281217}
   - {fileID: 1989140472}
+--- !u!1 &1305625980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305625984}
+  - component: {fileID: 1305625983}
+  - component: {fileID: 1305625982}
+  - component: {fileID: 1305625981}
+  m_Layer: 0
+  m_Name: Lilypad Goal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1305625981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305625980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540ee25156c40f14c8fe57242efb4079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalCollision
+--- !u!61 &1305625982
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305625980}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6666666, y: 1.4166666}
+    newSize: {x: 0.2, y: 0.17}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.6666666, y: 1.4166666}
+  m_EdgeRadius: 0
+--- !u!212 &1305625983
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305625980}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -6636963309793451902, guid: 50ba58d9b3b573641a972a205396e24f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.2, y: 0.17}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &1305625984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305625980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315281215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1153,7 @@ MonoBehaviour:
   _duration: 0
   _minSpawnTime: 1
   _maxSpawnTime: 3
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!1 &1329857371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1207,7 @@ MonoBehaviour:
   _duration: 0
   _minSpawnTime: 1
   _maxSpawnTime: 3
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!1 &1487545373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1262,66 @@ MonoBehaviour:
   - {fileID: 405732287}
   - {fileID: 375404885}
   _increaseMoveSpeed: 0
+--- !u!1 &1568772753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568772754}
+  - component: {fileID: 1568772756}
+  - component: {fileID: 1568772755}
+  m_Layer: 0
+  m_Name: Goal Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568772754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568772753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1987373483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568772755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568772753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8731b2558ca6ce846ac1c428e6c6ef61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalManager
+--- !u!114 &1568772756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568772753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01929ff9d3cdbda448e26f9829f194a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LivesManager
+  _numberOfLives: 3
+  _player: {fileID: 315617217}
+  _spawnPoint: {x: 0, y: -6}
 --- !u!1 &1732887087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1515,7 @@ MonoBehaviour:
   _duration: 0
   _minSpawnTime: 2
   _maxSpawnTime: 4
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!1 &1828611945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1589,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _slowLaneOne: 0
   _slowLaneTwo: 0
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!114 &1893627027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,6 +1618,86 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1828611946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1923922215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923922216}
+  - component: {fileID: 1923922217}
+  m_Layer: 0
+  m_Name: Lives Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923922216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923922215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1987373483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923922217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923922215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01929ff9d3cdbda448e26f9829f194a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LivesManager
+  _numberOfLives: 3
+  _player: {fileID: 315617217}
+  _spawnPoint: {x: 0, y: -6}
+--- !u!1 &1987373482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987373483}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1987373483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987373482}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1923922216}
+  - {fileID: 1568772754}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989140470
 GameObject:
@@ -1467,14 +1752,16 @@ MonoBehaviour:
   _duration: 0
   _minSpawnTime: 1
   _maxSpawnTime: 3
-  _isSpawning: 0
+  _isSpawning: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1987373483}
   - {fileID: 315617223}
   - {fileID: 1487545374}
   - {fileID: 913016825}
   - {fileID: 1748153957}
+  - {fileID: 1305625984}

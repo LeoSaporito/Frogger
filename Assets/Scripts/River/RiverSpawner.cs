@@ -33,8 +33,7 @@ public class RiverSpawner : MonoBehaviour
     {
         if (_progress > _duration)
         {
-            CreateLog();
-            CreateTurtle();
+            ObjectToSpawn();
 
             _duration = ChangeSpawnRate();
             _progress = 0f;
@@ -44,27 +43,24 @@ public class RiverSpawner : MonoBehaviour
             _progress += Time.deltaTime;
         }
     }
-    private void CreateLog()
+    private void ObjectToSpawn()
     {
         if (_isLogSpawner)
         {
-            GameObject _logObj = Instantiate(_logPrefab, transform.position, Quaternion.identity, transform);
-            LogMovement _logMovement = _logObj.GetComponent<LogMovement>();
-
-            _logMovement._moveSpeed = _moveSpeed;
-            _logMovement._direction = _direction;
+            Create(_logPrefab);
+        }
+        else
+        {
+            Create(_turtlePrefab);
         }
     }
-    private void CreateTurtle()
+    private void Create(GameObject _prefab)
     {
-        if (!_isLogSpawner)
-        {
-            GameObject _turtleObj = Instantiate(_turtlePrefab, transform.position, Quaternion.identity, transform);
-            TurtleMovement _turtleMovement = _turtleObj.GetComponent<TurtleMovement>();
+        GameObject _Obj = Instantiate(_prefab, transform.position, Quaternion.identity, transform);
+        RiverMovement _riverMovement = _Obj.GetComponent<RiverMovement>();
 
-            _turtleMovement._moveSpeed = _moveSpeed;
-            _turtleMovement._direction = _direction;
-        }
+        _riverMovement._moveSpeed = _moveSpeed;
+        _riverMovement._direction = _direction;
     }
     private float ChangeSpawnRate()
     {

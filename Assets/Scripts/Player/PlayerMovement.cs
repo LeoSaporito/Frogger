@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerController;
 
+    [SerializeField] private bool _isOnRiver;
+    [SerializeField] private float _riverMoveSpeed;
+    [SerializeField] private float _riverDirection;
+
     private void Start()
     {
         GetScripts();
@@ -13,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private void GetScripts()
     {
         _playerController = GetComponent<PlayerController>();
+    }
+    private void Update()
+    {
+        MoveWithRiver();
     }
     public void MoveLeft()
     {
@@ -34,4 +42,29 @@ public class PlayerMovement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y - 2, 0);
         transform.eulerAngles = new Vector3(0, 0, 180);
     }    
+    public void MoveWithRiver()
+    {
+        if (_isOnRiver)
+        {
+            Vector2 _position = transform.position;
+
+            _position.x += Time.deltaTime * _riverMoveSpeed * _riverDirection;
+        
+            transform.position = _position;
+        }
+    }
+    public void StartMoveOnRiver(float direction, float moveSpeed)
+    {
+        _isOnRiver = true;
+
+        _riverMoveSpeed = moveSpeed;
+        _riverDirection = direction;
+    }
+    public void StopMoveOnRiver()
+    {
+        _isOnRiver = false;
+
+        _riverMoveSpeed = 0f;
+        _riverDirection = 0f;
+    }
 }
