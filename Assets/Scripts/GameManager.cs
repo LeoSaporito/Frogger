@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     public void GoalReached()
     {
+        _playerController._isGoalReached = true;
         _levelManager.LevelCompleted();
     }
     public void StartNextLevel()
@@ -20,7 +21,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        _riverSpawnerManager.PauseRiver();
-        _trafficSpawnerManager.PauseRiver();
+        _riverSpawnerManager.PauseSpawners();
+        _trafficSpawnerManager.PauseSpawners();
+    }
+    public void ResumeGame()
+    {
+        _riverSpawnerManager.ResumeSpawners();
+        _trafficSpawnerManager.ResumeSpawners();
     }
 }

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public bool _isGoalReached;
 
     [SerializeField] private GameManager _gameManager;
+    
+    [SerializeField] public bool _isPaused;
     private void Start()
     {
         GetScripts();
@@ -24,7 +26,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (_isGameOver || _isGoalReached) { return; }
+        PauseButton();
+        if (_isGameOver || _isGoalReached || _isPaused) { return; }
         Movement();
     }
     public void Movement()
@@ -45,10 +48,21 @@ public class PlayerController : MonoBehaviour
         {
             _playerMovement.MoveRight();
         }
-
+    }
+    public void PauseButton()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            _isPaused = !_isPaused;
+        }
+
+        if (_isPaused)
+        {
             _gameManager.PauseGame();
+        }
+        else
+        {
+            _gameManager.ResumeGame();
         }
     }
     public void GoalReached()

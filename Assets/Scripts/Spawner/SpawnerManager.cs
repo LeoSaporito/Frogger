@@ -27,11 +27,18 @@ public class SpawnerManager : MonoBehaviour
             _spawners[i]._moveSpeed += _speedIncreaseValue;
         }
     }
-    public void PauseRiver()
+    public void PauseSpawners()
     {
         for (int i = 0; i < _spawners.Length; i++)
         {
-            _spawners[i].PauseSpawner();
+            _spawners[i].PauseObjects();
+        }
+    }
+    public void ResumeSpawners()
+    {
+        for (int i = 0; i < _spawners.Length; i++)
+        {
+            _spawners[i].ResumeObjects();
         }
     }
 }

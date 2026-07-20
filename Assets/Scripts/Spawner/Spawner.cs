@@ -91,7 +91,7 @@ public class Spawner : MonoBehaviour
         _spawnedObjList.Remove(_spawnedObj);
         Destroy(_spawnedObj);
     }
-    public void PauseSpawner()
+    public void PauseObjects()
     {
         _isSpawning = false;
         for (int i = 0; i < _spawnedObjList.Count; i++)
@@ -99,7 +99,7 @@ public class Spawner : MonoBehaviour
             _spawnedObjList[i].GetComponent<Movements>()._isPaused = true;
         }
     }
-    public void ResumeSpawner()
+    public void ResumeObjects()
     {
         _isSpawning = true;
         for (int i = 0; i < _spawnedObjList.Count; i++)
