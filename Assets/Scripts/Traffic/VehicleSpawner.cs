@@ -71,7 +71,6 @@ public class VehicleSpawner : MonoBehaviour
         {
             vehicleObj.GetComponent<SpriteRenderer>().sprite = _truckSprite;
         }
-
     }
     private float ChangeSpawnRate()
     {

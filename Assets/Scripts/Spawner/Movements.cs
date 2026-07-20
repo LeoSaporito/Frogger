@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RiverMovement : MonoBehaviour
+public class Movements : MonoBehaviour
 {
     [SerializeField] public float _moveSpeed;
     [SerializeField] public float _direction;
@@ -13,14 +13,14 @@ public class RiverMovement : MonoBehaviour
     }
     private void Update()
     {
-        if(_isPaused) { return; }
+        if (_isPaused) { return; }
         else
         {
             _position = transform.position;
 
             _position.x += Time.deltaTime * _moveSpeed * _direction;
 
-            transform.position = _position;        
+            transform.position = _position;
         }
-    }   
+    }
 }

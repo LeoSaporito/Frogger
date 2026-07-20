@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public bool _isGameOver;
     [SerializeField] public bool _isGoalReached;
+
+    [SerializeField] private GameManager _gameManager;
     private void Start()
     {
         GetScripts();
@@ -42,6 +44,11 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             _playerMovement.MoveRight();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _gameManager.PauseGame();
         }
     }
     public void GoalReached()

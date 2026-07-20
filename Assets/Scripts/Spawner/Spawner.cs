@@ -1,14 +1,16 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class RiverSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private bool _isLogSpawner;
+    [SerializeField] private bool _isTurtleSpawner;
+    [SerializeField] private bool _isVehicleSpawner;
 
     [SerializeField] private GameObject _logPrefab;
     [SerializeField] private GameObject _turtlePrefab;
-    
+    [SerializeField] private GameObject _vehiclePrefab;
+
     [SerializeField] public float _moveSpeed;
     [SerializeField] private float _direction;
 
@@ -21,7 +23,8 @@ public class RiverSpawner : MonoBehaviour
     [SerializeField] public bool _isSpawning;
     [SerializeField] public bool _isPaused;
 
-    [SerializeField] public List<GameObject> _riverMovementList = new List<GameObject>();
+    [SerializeField] private List<GameObject> _spawnedObjList = new List<GameObject>();
+
     private void Start()
     {
         _duration = ChangeSpawnRate();
@@ -31,10 +34,10 @@ public class RiverSpawner : MonoBehaviour
         if (!_isSpawning) { return; }
         else
         {
-            Spawner();
+            Spawn();
         }
     }
-    private void Spawner()
+    private void Spawn()
     {
         if (_progress > _duration)
         {
@@ -54,20 +57,28 @@ public class RiverSpawner : MonoBehaviour
         {
             Create(_logPrefab);
         }
-        else
+        else if (_isTurtleSpawner)
         {
-            Create(_turtlePrefab);
+            Create(_turtlePrefab);            
+        }
+        else if(_isVehicleSpawner)
+        {
+            Create(_vehiclePrefab);
         }
     }
     private void Create(GameObject _prefab)
     {
         GameObject _obj = Instantiate(_prefab, transform.position, Quaternion.identity, transform);
-        RiverMovement _riverMovement = _obj.GetComponent<RiverMovement>();
+        Movements _movement = _obj.GetComponent<Movements>();
+        Despawn _despawn = _obj.GetComponent<Despawn>();
 
-        _riverMovement._moveSpeed = _moveSpeed;
-        _riverMovement._direction = _direction;
+        _movement._moveSpeed = _moveSpeed;
+        _movement._direction = _direction;
+        _movement.transform.localScale = new Vector3(_direction, 1, 1);
 
-        _riverMovementList.Add(_obj);
+        _despawn.InitializeScript(this);
+
+        _spawnedObjList.Add(_obj);
     }
     private float ChangeSpawnRate()
     {
@@ -75,14 +86,25 @@ public class RiverSpawner : MonoBehaviour
 
         return newDuration;
     }
-    public void PauseSpawner() 
+    public void DespawnObj(GameObject _spawnedObj)
+    {
+        _spawnedObjList.Remove(_spawnedObj);
+        Destroy(_spawnedObj);
+    }
+    public void PauseSpawner()
     {
         _isSpawning = false;
-        _isPaused = true;
+        for (int i = 0; i < _spawnedObjList.Count; i++)
+        {
+            _spawnedObjList[i].GetComponent<Movements>()._isPaused = true;
+        }
     }
-    public void ResumeSpawner() 
-    { 
+    public void ResumeSpawner()
+    {
         _isSpawning = true;
-        _isPaused = false;
+        for (int i = 0; i < _spawnedObjList.Count; i++)
+        {
+            _spawnedObjList[i].GetComponent<Movements>()._isPaused = false;
+        }
     }
 }

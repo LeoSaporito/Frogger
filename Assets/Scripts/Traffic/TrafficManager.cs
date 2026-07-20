@@ -2,28 +2,29 @@ using UnityEngine;
 
 public class TrafficManager : MonoBehaviour
 {
-    [SerializeField] private VehicleSpawner[] _vehicleSpawners;
+    [SerializeField] private Spawner[] _Spawners;
     [SerializeField] private float _increaseMoveSpeed;
+    [SerializeField] private float _speedIncreaseValue;
 
-    private void IncreaseVehicleSpeed()
-    {
-        for (int i = 0; i<_vehicleSpawners.Length; i++)
-        {
-            _vehicleSpawners[i]._moveSpeed += _increaseMoveSpeed;
-        }
-    }
     private void StopTraffic()
     {
-        for (int i = 0; i < _vehicleSpawners.Length; i++)
+        for (int i = 0; i < _Spawners.Length; i++)
         {
-            _vehicleSpawners[i]._isSpawning = false;
+            _Spawners[i]._isSpawning = false;
         }
     }
     private void StartTraffic()
     {
-        for (int i = 0; i < _vehicleSpawners.Length; i++)
+        for (int i = 0; i < _Spawners.Length; i++)
         {
-            _vehicleSpawners[i]._isSpawning = true;
+            _Spawners[i]._isSpawning = true;
+        }
+    }
+    public void IncreaseSpeed()
+    {
+        for (int i = 0; i < _Spawners.Length; i++)
+        {
+            _Spawners[i]._moveSpeed += _speedIncreaseValue;
         }
     }
 }

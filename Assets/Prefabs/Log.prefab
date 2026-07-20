@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1163873541787824430}
   - component: {fileID: 4183125662238501252}
   - component: {fileID: 5461991843263453362}
+  - component: {fileID: 3057779302822888906}
   - component: {fileID: 4362670110781043127}
-  - component: {fileID: 4553971465024011313}
+  - component: {fileID: 2381847835860518859}
   m_Layer: 0
   m_Name: Log
   m_TagString: River
@@ -140,6 +141,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.125, y: 1.0625}
   m_EdgeRadius: 0
+--- !u!114 &3057779302822888906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903002080116544697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78e75b3afe69bb40a78cca9ebc2e49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movements
+  _moveSpeed: 0
+  _direction: 0
+  _position: {x: 0, y: 0}
+  _isPaused: 0
 --- !u!114 &4362670110781043127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RiverCollision
   _moveSpeed: 0
   _direction: 0
---- !u!114 &4553971465024011313
+--- !u!114 &2381847835860518859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,9 +180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3903002080116544697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe6664eef4b46b4fbec9ab8dc19fd53, type: 3}
+  m_Script: {fileID: 11500000, guid: 399bcb00b60dbb946aab5bc546923e75, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverMovement
-  _moveSpeed: 0
-  _direction: 0
-  _position: {x: 0, y: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Despawn
+  viewportPosition: {x: 0, y: 0, z: 0}
+  _spawner: {fileID: 0}
+  _minMargin: -0.25
+  _maxMargin: 1.25

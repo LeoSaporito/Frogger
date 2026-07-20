@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 6087066806643109903}
   - component: {fileID: 4228194541223680900}
   - component: {fileID: 2187379226978054877}
-  - component: {fileID: 245306707437126901}
+  - component: {fileID: -8271008703421380919}
+  - component: {fileID: 4933863863199367618}
   - component: {fileID: 6241989319950336219}
+  - component: {fileID: -6703594437712175804}
   m_Layer: 0
   m_Name: Vehicles
   m_TagString: Hazard
@@ -140,7 +142,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.625, y: 1.375}
   m_EdgeRadius: 0
---- !u!114 &245306707437126901
+--- !u!114 &-8271008703421380919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,12 +151,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2635186766239911718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f474a1ea522cde4699e06676cacd56d, type: 3}
+  m_Script: {fileID: 11500000, guid: c78e75b3afe69bb40a78cca9ebc2e49b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleMovement
+  m_EditorClassIdentifier: Assembly-CSharp::Movements
+  _moveSpeed: 0
   _direction: 0
-  _moveSpeed: 3
   _position: {x: 0, y: 0}
+  _isPaused: 0
+--- !u!114 &4933863863199367618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635186766239911718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bcc595c24b52e4c99513c780425e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleType
+  _carSprite: {fileID: 4273724031106649725, guid: 669b9537ceac85f49b6eeb16e61770cb, type: 3}
+  _truckSprite: {fileID: -6461785809725244843, guid: 28e2d13003ede27428a030f5ab4640a6, type: 3}
 --- !u!114 &6241989319950336219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +184,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d1403156928e141967def63146b974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HazardCollision
+--- !u!114 &-6703594437712175804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635186766239911718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399bcb00b60dbb946aab5bc546923e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Despawn
+  viewportPosition: {x: 0, y: 0, z: 0}
+  _spawner: {fileID: 0}
+  _minMargin: -0.25
+  _maxMargin: 1.25

@@ -6,7 +6,7 @@ public class RiverCollision : MonoBehaviour
     [SerializeField] public float _direction;
     private void GetObjectData()
     {
-        RiverMovement _riverMovement = GetComponent<RiverMovement>();
+        Movements _riverMovement = GetComponent<Movements>();
 
         _moveSpeed = _riverMovement._moveSpeed;
         _direction = _riverMovement._direction;
