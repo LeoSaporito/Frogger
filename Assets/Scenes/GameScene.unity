@@ -176,6 +176,7 @@ MonoBehaviour:
   _isGameOver: 0
   _isGoalReached: 0
   _gameManager: {fileID: 1987373484}
+  _isPaused: 0
 --- !u!212 &315617222
 SpriteRenderer:
   serializedVersion: 2
@@ -423,8 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 375404887}
-  - component: {fileID: 375404886}
-  - component: {fileID: 375404885}
+  - component: {fileID: 375404888}
   m_Layer: 0
   m_Name: Traffic Spawner
   m_TagString: Untagged
@@ -432,45 +432,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &375404885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375404884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8996b423ee1a2cd4098708dd740ad855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleSpawner
-  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
-  _carSprite: {fileID: 4273724031106649725, guid: 669b9537ceac85f49b6eeb16e61770cb, type: 3}
-  _truckSprite: {fileID: -6461785809725244843, guid: 28e2d13003ede27428a030f5ab4640a6, type: 3}
-  _moveSpeed: 7
-  _direction: 1
-  _progress: 0
-  _duration: 1
-  _minSpawnTime: 1
-  _maxSpawnTime: 3
-  _slowLaneOne: 0
-  _slowLaneTwo: 0
-  _isSpawning: 1
---- !u!114 &375404886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375404884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1aef8598b1a9044a7f1e00fec37245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  _vehicleSpawners: []
-  _increaseMoveSpeed: 0
-  _speedIncreaseValue: 0
 --- !u!4 &375404887
 Transform:
   m_ObjectHideFlags: 0
@@ -486,6 +447,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1800467581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &375404888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375404884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _isLogSpawner: 0
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 1
+  _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
+  _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
+  _moveSpeed: 7
+  _direction: 1
+  _progress: 0
+  _duration: 1
+  _minSpawnTime: 1
+  _maxSpawnTime: 3
+  _isSpawning: 1
+  _isPaused: 0
+  _spawnedObjList: []
 --- !u!1 &405732286
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,8 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 405732289}
-  - component: {fileID: 405732288}
-  - component: {fileID: 405732287}
+  - component: {fileID: 405732290}
   m_Layer: 0
   m_Name: 'Traffic Spawner '
   m_TagString: Untagged
@@ -504,45 +491,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &405732287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405732286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8996b423ee1a2cd4098708dd740ad855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleSpawner
-  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
-  _carSprite: {fileID: 4273724031106649725, guid: 669b9537ceac85f49b6eeb16e61770cb, type: 3}
-  _truckSprite: {fileID: -6461785809725244843, guid: 28e2d13003ede27428a030f5ab4640a6, type: 3}
-  _moveSpeed: 10
-  _direction: 1
-  _progress: 0
-  _duration: 1
-  _minSpawnTime: 1
-  _maxSpawnTime: 3
-  _slowLaneOne: 0
-  _slowLaneTwo: 0
-  _isSpawning: 1
---- !u!114 &405732288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405732286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1aef8598b1a9044a7f1e00fec37245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  _vehicleSpawners: []
-  _increaseMoveSpeed: 0
-  _speedIncreaseValue: 0
 --- !u!4 &405732289
 Transform:
   m_ObjectHideFlags: 0
@@ -558,6 +506,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1732887088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405732290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405732286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _isLogSpawner: 0
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 1
+  _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
+  _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
+  _moveSpeed: 10
+  _direction: 1
+  _progress: 0
+  _duration: 1
+  _minSpawnTime: 1
+  _maxSpawnTime: 3
+  _isSpawning: 1
+  _isPaused: 0
+  _spawnedObjList: []
 --- !u!1 &436865643
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,8 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760143566}
-  - component: {fileID: 760143565}
-  - component: {fileID: 760143564}
+  - component: {fileID: 760143567}
   m_Layer: 0
   m_Name: Traffic Spawner
   m_TagString: Untagged
@@ -906,45 +880,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &760143564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760143563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8996b423ee1a2cd4098708dd740ad855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleSpawner
-  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
-  _carSprite: {fileID: 4273724031106649725, guid: 669b9537ceac85f49b6eeb16e61770cb, type: 3}
-  _truckSprite: {fileID: -6461785809725244843, guid: 28e2d13003ede27428a030f5ab4640a6, type: 3}
-  _moveSpeed: 12
-  _direction: -1
-  _progress: 0
-  _duration: 1
-  _minSpawnTime: 1
-  _maxSpawnTime: 3
-  _slowLaneOne: 0
-  _slowLaneTwo: 0
-  _isSpawning: 1
---- !u!114 &760143565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760143563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1aef8598b1a9044a7f1e00fec37245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  _vehicleSpawners: []
-  _increaseMoveSpeed: 0
-  _speedIncreaseValue: 0
 --- !u!4 &760143566
 Transform:
   m_ObjectHideFlags: 0
@@ -960,6 +895,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 374317045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &760143567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760143563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _isLogSpawner: 0
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 1
+  _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
+  _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
+  _moveSpeed: 12
+  _direction: -1
+  _progress: 0
+  _duration: 1
+  _minSpawnTime: 1
+  _maxSpawnTime: 3
+  _isSpawning: 1
+  _isPaused: 0
+  _spawnedObjList: []
 --- !u!1 &913016824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,14 +967,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 913016824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5f9ffe0a4c2fa4fa74b69e75d5a04f, type: 3}
+  m_Script: {fileID: 11500000, guid: f02c916a42fc090499037b294195e0c5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverManager
-  _riverSpawners:
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
+  _spawners:
   - {fileID: 1802001047}
   - {fileID: 1329857373}
   - {fileID: 1315281217}
   - {fileID: 1989140472}
+  _increaseMoveSpeed: 0
   _speedIncreaseValue: 0
 --- !u!1 &954352873
 GameObject:
@@ -1214,7 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8731b2558ca6ce846ac1c428e6c6ef61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalManager
-  _gameManager: {fileID: 0}
+  _gameManager: {fileID: 1987373484}
 --- !u!1 &1315281215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,12 +1219,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315281215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8bc2805637c64b985d695a17936dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
   _isLogSpawner: 1
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 0
   _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
   _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
   _moveSpeed: 6
   _direction: 1
   _progress: 0
@@ -1270,7 +1236,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _isSpawning: 1
   _isPaused: 0
-  _riverMovementList: []
+  _spawnedObjList: []
 --- !u!1 &1329857371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,12 +1278,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329857371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8bc2805637c64b985d695a17936dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
   _isLogSpawner: 1
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 0
   _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
   _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
   _moveSpeed: 3
   _direction: 1
   _progress: 0
@@ -1326,7 +1295,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _isSpawning: 1
   _isPaused: 0
-  _riverMovementList: []
+  _spawnedObjList: []
 --- !u!1 &1487545373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,14 +1341,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1487545373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1aef8598b1a9044a7f1e00fec37245, type: 3}
+  m_Script: {fileID: 11500000, guid: f02c916a42fc090499037b294195e0c5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  _vehicleSpawners:
-  - {fileID: 1893627026}
-  - {fileID: 760143564}
-  - {fileID: 405732287}
-  - {fileID: 375404885}
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
+  _spawners:
+  - {fileID: 1893627029}
+  - {fileID: 760143567}
+  - {fileID: 405732290}
+  - {fileID: 375404888}
   _increaseMoveSpeed: 0
   _speedIncreaseValue: 0
 --- !u!1 &1732887087
@@ -1612,12 +1581,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802001045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8bc2805637c64b985d695a17936dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
   _isLogSpawner: 0
+  _isTurtleSpawner: 1
+  _isVehicleSpawner: 0
   _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
   _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
   _moveSpeed: 4
   _direction: -1
   _progress: 0
@@ -1626,7 +1598,7 @@ MonoBehaviour:
   _maxSpawnTime: 4
   _isSpawning: 1
   _isPaused: 0
-  _riverMovementList: []
+  _spawnedObjList: []
 --- !u!1 &1828611945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,8 +1640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893627028}
-  - component: {fileID: 1893627027}
-  - component: {fileID: 1893627026}
+  - component: {fileID: 1893627029}
   m_Layer: 0
   m_Name: Traffic Spawner
   m_TagString: Untagged
@@ -1677,45 +1648,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1893627026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893627025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8996b423ee1a2cd4098708dd740ad855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleSpawner
-  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
-  _carSprite: {fileID: 4273724031106649725, guid: 669b9537ceac85f49b6eeb16e61770cb, type: 3}
-  _truckSprite: {fileID: -6461785809725244843, guid: 28e2d13003ede27428a030f5ab4640a6, type: 3}
-  _moveSpeed: 6
-  _direction: -1
-  _progress: 0
-  _duration: 1
-  _minSpawnTime: 1
-  _maxSpawnTime: 3
-  _slowLaneOne: 0
-  _slowLaneTwo: 0
-  _isSpawning: 1
---- !u!114 &1893627027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893627025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1aef8598b1a9044a7f1e00fec37245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  _vehicleSpawners: []
-  _increaseMoveSpeed: 0
-  _speedIncreaseValue: 0
 --- !u!4 &1893627028
 Transform:
   m_ObjectHideFlags: 0
@@ -1731,6 +1663,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1828611946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893627029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893627025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _isLogSpawner: 0
+  _isTurtleSpawner: 0
+  _isVehicleSpawner: 1
+  _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
+  _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
+  _moveSpeed: 6
+  _direction: -1
+  _progress: 0
+  _duration: 1
+  _minSpawnTime: 1
+  _maxSpawnTime: 3
+  _isSpawning: 1
+  _isPaused: 0
+  _spawnedObjList: []
 --- !u!1 &1923922215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,12 +1785,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d050e5bf5cf2a8f4abc45c7dc4f339d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _riverManager: {fileID: 913016826}
-  _trafficManager: {fileID: 0}
-  _timerManager: {fileID: 0}
-  _scoreManager: {fileID: 0}
-  _levelManager: {fileID: 0}
-  _playerController: {fileID: 0}
+  _riverSpawnerManager: {fileID: 913016826}
+  _trafficSpawnerManager: {fileID: 1487545375}
+  _levelManager: {fileID: 597821083}
+  _playerController: {fileID: 315617220}
 --- !u!1 &1989140470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,12 +1830,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1989140470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8bc2805637c64b985d695a17936dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b88e5f7a2a6154ba670db808e2cd5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiverSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
   _isLogSpawner: 0
+  _isTurtleSpawner: 1
+  _isVehicleSpawner: 0
   _logPrefab: {fileID: 3903002080116544697, guid: e3d8c37e86702df45a215855cd8a9e03, type: 3}
   _turtlePrefab: {fileID: 5885823339760332892, guid: 5061dd363a0482841bfd67ef129177aa, type: 3}
+  _vehiclePrefab: {fileID: 2635186766239911718, guid: 38a08f9f67a2df24fa07f59b7a46b222, type: 3}
   _moveSpeed: 8
   _direction: -1
   _progress: 0
@@ -1887,7 +1847,7 @@ MonoBehaviour:
   _maxSpawnTime: 3
   _isSpawning: 1
   _isPaused: 0
-  _riverMovementList: []
+  _spawnedObjList: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
