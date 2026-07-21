@@ -4,8 +4,10 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TimerManager _timerManager;
-    [SerializeField] private int _score;
+    [SerializeField] public int _score;
+    [SerializeField] public int _highScore;
     [SerializeField] private int _addToScore;
+
     [SerializeField] private float _timer;
     [SerializeField] private float _scoreSpeed;
     public void UpdateScore()
@@ -32,5 +34,18 @@ public class ScoreManager : MonoBehaviour
         _timer = 0f;
         
         yield return null;
+    }
+
+    private void Update()
+    {
+        SetNewHighScore();
+    }
+
+    private void SetNewHighScore()
+    {
+        if (_score > _highScore)
+        {
+            _highScore = _score;
+        }
     }
 }

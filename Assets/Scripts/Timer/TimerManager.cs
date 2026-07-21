@@ -6,7 +6,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] public float timer;
     [SerializeField] public int _timerProgress;
     [SerializeField] private int _timerMin;
-    [SerializeField] private int _timerMax;
+    [SerializeField] public int _timerMax;
 
     [SerializeField] private bool _stopTimer;
     private void Start()

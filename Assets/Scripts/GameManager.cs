@@ -8,8 +8,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelManager _levelManager;
 
     [SerializeField] private PlayerController _playerController;
+
+    [SerializeField] private bool _isPaused;
+    private void Update()
+    {
+        Pause();
+    }
     public void GoalReached()
     {
+        _isPaused = true;
         _playerController._isGoalReached = true;
         _levelManager.LevelCompleted();
     }
@@ -18,7 +25,22 @@ public class GameManager : MonoBehaviour
         _riverSpawnerManager.IncreaseSpeed();
         _trafficSpawnerManager.IncreaseSpeed();
     }
+    public void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _isPaused = !_isPaused;
+        }
 
+        if (_isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+    }
     public void PauseGame()
     {
         _riverSpawnerManager.PauseSpawners();

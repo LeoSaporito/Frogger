@@ -10,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
             GameObject _goal = collision.gameObject;
 
             _goal.GetComponent<GoalManager>().GoalReached();
+
+            transform.eulerAngles = new Vector3(0, 0, 180);
         }
     }
 }

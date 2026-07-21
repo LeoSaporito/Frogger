@@ -3,7 +3,6 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private Spawner[] _spawners;
-    [SerializeField] private float _increaseMoveSpeed;
     [SerializeField] private float _speedIncreaseValue;
 
     private void StopTraffic()

@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        PauseButton();
         if (_isGameOver || _isGoalReached || _isPaused) { return; }
         Movement();
     }
@@ -49,24 +48,21 @@ public class PlayerController : MonoBehaviour
             _playerMovement.MoveRight();
         }
     }
-    public void PauseButton()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _isPaused = !_isPaused;
-        }
-
-        if (_isPaused)
-        {
-            _gameManager.PauseGame();
-        }
-        else
-        {
-            _gameManager.ResumeGame();
-        }
-    }
     public void GoalReached()
     {
         _isGoalReached = true;
+    }
+    public void PausePlayer()
+    {
+        _isPaused = true;
+    }
+    public void ResumePlayer()
+    {
+        _isPaused = false;
+    }
+    public void ResetPlayer()
+    {
+        transform.position = new Vector3(0, -8, 0);
+        transform.position = new Vector3(0, -8, 0);
     }
 }
